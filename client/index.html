@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- Import FontAwesome -->
+    <script src="https://kit.fontawesome.com/cfc33a6e6d.js"></script>
+    <!-- Import My Style -->
+    <link rel="stylesheet" href="/assets/css/autocomplete.css" />
+    <link rel="stylesheet" href="/assets/css/index.css" />
+    <link rel="stylesheet" href="/assets/css/modal.css" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <title>iBank</title>
+</head>
+
+<body>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal-my">
+        <!-- Modal content -->
+        <div class="my-modal-content">
+            <span class="close">&times;</span>
+            <form id="first_step" autocomplete="off">
+                <p> Here you can to search for bank name with substr only :) </p>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"><i class="fab fa-searchengin"></i></span>
+                    </div>
+                    <input id="substr" type="text" class="form-control" placeholder="substr" aria-label="Username"
+                        aria-describedby="basic-addon1">
+                </div>
+                <button type="button" id="sendsubstr" class="btn btn-outline-primary d-flex justify-content-center mx-auto mt-4">
+                    Search
+                </button>
+            </form>
+            <div id="sub_result">
+                <ul id="names" class="list-group">
+
+                </ul>
+            </div>
+
+            <form id="second_step" class="d-none" autocomplete="off">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-university"></i></span>
+                    </div>
+                    <input id="branchName" type="text" class="form-control" placeholder="Branch number"
+                        aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-info"></i></span>
+                    </div>
+                    <input id="branchNumber" type="text" class="form-control" placeholder="Branch number"
+                        aria-describedby="basic-addon1">
+                </div>
+                <button type="button" id="sendSecondStep" class="btn btn-outline-primary d-flex justify-content-center mx-auto mt-4">
+                        Search
+                </button>
+            </form>
+            <button type="button" id="FinalBTN" class="d-none btn btn-outline-primary justify-content-center mx-auto mt-4">
+                    Get the bank
+            </button>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="/img/logo.png" width="30" height="30" class="d-inline-block" alt="" />
+                    <span class="nav_logo">iBank</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+                    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <span class="navbar-text">
+                        | The Perfect One
+                    </span>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" id="open_model" href="#">Custom Search</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="getAll" href="#">Banks (Get All)</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <header>
+                <div class="row">
+                    <div class="col-12">
+                        <a href="#" id="logo">
+                            <i class="logo_icon fas fa-piggy-bank"></i> Piggy Search
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form method="GET" autocomplete="off">
+                            <p>
+                                Hello and wellcome to iBank, Please fill the inputs below to
+                                contnue
+                            </p>
+                            <div class="input-group flex-nowrap">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="addon-wrapping"><i
+                                            class="fas fa-university"></i></span>
+                                </div>
+                                <input id="My-input" type="text" class="form-control autocomplete"
+                                    placeholder="Bank name" name="Bank_Name" aria-describedby="addon-wrapping" />
+                                <div class="result"></div>
+                            </div>
+                            <div class="input-group flex-nowrap">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="addon-wrapping"><i
+                                            class="fas fa-location-arrow"></i></span>
+                                </div>
+                                <input id="My-input2" type="text" class="form-control" placeholder="Branch name"
+                                    name="Branch_Name" aria-describedby="addon-wrapping" />
+                                <div class="result2"></div>
+                            </div>
+                            <span id="msg"></span>
+                            <button type="button" id="sendAuto" class="mybtn mt-4">
+                                Search
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </header>
+
+            <div id="main-app">
+                <div id="x" class="row mt-3 d-flex justify-content-center"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <!-- Import My JS -->
+    <script src="/assets/js/autocomplete.js"></script>
+    <script src="/assets/js/modal.js"></script>
+    <script src="/assets/js/app.js"></script>
+</body>
+
+</html>

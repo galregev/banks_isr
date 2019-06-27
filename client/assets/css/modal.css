@@ -1,0 +1,57 @@
+.modal-my {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 50%;
+    overflow: auto !important;
+    transform: translateX(-50%);
+    width: 100% !important; /* Full width */
+    height: 100vh !important; /* Full height */
+    background-color: rgba(0, 0, 0, 0.803); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .my-modal-content {
+    background-color: #fefefe;
+    margin: 10vh auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 20vw; /* Could be more or less, depending on screen size */
+    min-height: 50%;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .modal-item {
+      cursor: pointer;
+  }
+
+  .mybtn{
+    padding: 1rem;
+    width: 150px;
+    color: #1e1e52;
+    border-color: #87c7e4;
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    background: linear-gradient(30deg, #a1c4fd, #c2e9fb);
+    transition: all .1s ease-in-out;
+    }
+
+    .mybtn:hover {
+        transform: rotate(5deg) scale(1.1);
+        box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+        text-decoration: underline;
+    }
